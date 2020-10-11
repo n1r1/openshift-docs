@@ -1,0 +1,18 @@
+// Module included in the following assemblies:
+//
+// * machine_management/deploying-machine-health-checks.adoc
+// * post_installation_configuration/node-tasks.adoc
+
+[id="machine-health-checks-baremetal_{context}"]
+= MachineHealthChecks on Bare Metal
+
+Machine deletion on bare metal cluster triggers reprovisioning of a bare metal host.
+Usually bare metal reprovisioning is a lengthy process, in which the cluster 
+is lacking compute power, and some applications are down.
+To change the default remediation process from machine deletion to host power-cycle,
+the MachineHealthCheck resource should be annotated with 
+`machine.openshift.io/remediation-strategy: external-baremetal`
+
+Once the annotation is set, unhealthy machines will be power-cycled by using 
+BMC credentials.
+
